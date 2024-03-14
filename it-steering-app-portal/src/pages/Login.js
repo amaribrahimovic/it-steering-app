@@ -14,11 +14,11 @@ const Login = () => {
         console.log(password);
     } 
     return (
-        <div>
+        <div className='card'>
             <h1>Prijava v portal</h1>
             <PrimaryInput value={username} onChange={e => setUsername(e.target.value)} type="text" placeholder="Uporabniško ime" id="username" name="username" />
             <PrimaryInput value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Geslo" id="password" name="password" />
-            <PrimaryButton onClick={handleLogin}>Prijava</PrimaryButton>
+            <PrimaryButton classNameTmp="primary-btn" onClick={handleLogin}>Prijava</PrimaryButton>
         </div>
     )
 }
