@@ -44,7 +44,7 @@ const checkJWT = req => {
             jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
                 if (err) 
                     resolve(false);
-                else 
+                else
                     resolve(true);
             });
         } else {
@@ -63,6 +63,22 @@ app.get('/projects', async (req, res)=>{
     } catch(err){
         console.error(err);
         res.status(500).send('An error has occurred while fetching all projects');
+    }
+});
+
+app.get('/user', async (req, res)=>{
+    const token = req.cookies.jwt
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
+            if (err) 
+                res.status(401).json({ message: 'You are not logged in' });
+            else{
+                const user = await User.findById(decodedToken.id);
+                res.status(200).json({ message: `${user}` });
+            }
+        });
+    } else{
+        res.status(401).json({ message: 'You are not logged in' });
     }
 });
 
@@ -150,7 +166,7 @@ app.post('/login', async (req, res)=>{
     }
 });
 
-app.get('/logout', async (req, res)=>{
+app.get('/logout', (req, res)=>{
     res.cookie('jwt', '', { maxAge: 1 });
     res.status(200).json({ message: 'Logged out'});
 });
