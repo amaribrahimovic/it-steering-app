@@ -69,20 +69,20 @@ A browser window should open on *localhost:3000* and the web app should be runni
 
 ### Login page
 
-![Login page](https://imgur.com/bdxspXw)
+![Login page](./photos/Login_page.png)
 
 ### Register page
 
-![Register page](https://imgur.com/sR03Bcm)
+![Register page](./photos/Register_page.png)
 
 ### Projects page - User's view
 
-![Projects page - User's view](https://imgur.com/2UhLLYm)
+![Projects page - User's view](./photos/Projects_user.png)
 
 ### Projects page - Admin's view
 
-![Projects page - Admin's view](https://imgur.com/lZf8qm1)
+![Projects page - Admin's view](./photos/Projects_admin.png)
 
 ### Create a project page
 
-![Create a project page](https://imgur.com/GsOtXSB)
+![Create a project page](./photos/Create_project.png)
