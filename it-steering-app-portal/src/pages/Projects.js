@@ -187,11 +187,12 @@ const Projects = () => {
                                                         [project._id]: e.target.value
                                                     });
                                                 }}
+                                                className={getStatusClassName(selectedStatuses[project._id])}
                                             >
-                                                <option value="V presoji">V presoji</option>
-                                                <option value="V izvedbi">V izvedbi</option>
-                                                <option value="Na čakanju">Na čakanju</option>
-                                                <option value="Zaključeno">Zaključeno</option>
+                                                <option value="V presoji" className='status-pending'>V presoji</option>
+                                                <option value="V izvedbi" className='status-in-progress'>V izvedbi</option>
+                                                <option value="Na čakanju" className='status-on-hold'>Na čakanju</option>
+                                                <option value="Zaključeno" className='status-completed'>Zaključeno</option>
                                             </select>
                                             </p>
                                             <div className="actions">

@@ -31,26 +31,6 @@ const Register = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // useEffect(() => {
-    //     const checkAuth = async () => {
-    //         try {
-    //             const res = await fetch('http://localhost:3210/user', {
-    //                 method: "GET",
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //                 credentials: 'include',
-    //             });
-    //             if (res.ok)
-    //                 navigate('/projects');
-    //         } catch (err) {
-    //             console.error(err);
-    //         }
-    //     };
-    
-    //     checkAuth();
-    // }, []);
-
     const handleRegister = async () => {
         if(username === '' || password === '' || repeatPassword === ''){
             setIsModalOpen(true)
@@ -80,7 +60,8 @@ const Register = () => {
         } catch(err){
             console.error(err);
         }
-    } 
+    }
+
     return (
         <div className='card-login'>
             <h1>Registracija</h1>

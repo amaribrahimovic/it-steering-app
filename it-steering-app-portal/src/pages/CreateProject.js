@@ -62,8 +62,8 @@ const CreateProject = () => {
 
     const handleCreateProject = async () => {
         if(projectTitle === '' || projectDesc === '' || businessImpact === '' || dueDate === ''){
-            setIsModalOpen(true)
-            setTimeout(()=>setIsModalOpen(false), 3000)
+            setIsModalOpen(true);
+            setTimeout(()=>setIsModalOpen(false), 3000);
             return;
         }
         try{
@@ -78,8 +78,8 @@ const CreateProject = () => {
             if (res.ok) {
                 navigate('/projects');
             } else{
-                setIsModalOpen(true)
-                setTimeout(()=>setIsModalOpen(false), 3000)
+                setIsModalOpen(true);
+                setTimeout(()=>setIsModalOpen(false), 3000);
             }
         } catch(err){
             console.error(err);
@@ -98,7 +98,6 @@ const CreateProject = () => {
                     <label htmlFor="due-date">Rok implementacije</label>
                     <PrimaryInput value={dueDate} onChange={e => setDueDate(e.target.value)} type="date" id="due-date" name="due-date" />
                 </div>
-
                 <PrimaryButton classNameTmp="primary-btn" onClick={handleCreateProject}>Oddaj Prijavo</PrimaryButton>
             </div>
 
@@ -106,8 +105,6 @@ const CreateProject = () => {
                 Nepravilni podatki
             </Modal>
         </>
-
-        
     )
 }
 
