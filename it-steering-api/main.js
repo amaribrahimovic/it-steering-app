@@ -3,6 +3,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
+const cookieParser = require('cookie-parser');
 require('dotenv').config()
 
 // Global Variables
@@ -11,10 +12,9 @@ const port = process.env.DEV_PORT;
 // Models
 const User = require('./models/User')
 const Project = require('./models/Project');
-const cookieParser = require('cookie-parser');
 
 // Database setup
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {dbName: 'it-steering-app'}).then(()=>console.log("Connected to the database"));
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {dbName: 'it-steering-app'}).then(()=>console.log("Connected to the database")).catch(err=>console.error(err));
 
 // Main Setup
 const app = express();
@@ -54,7 +54,6 @@ const checkJWT = req => {
 }
 
 // Api Calls
-
 // Check if user is logged in
 app.get('/user', async (req, res)=>{
     try{
