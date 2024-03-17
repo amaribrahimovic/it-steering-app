@@ -31,12 +31,15 @@ const CreateProject = () => {
     const [projectTitle, setProjectTitle] = useState('');
     const [projectDesc, setProjectDesc] = useState('');
     const [businessImpact, setBusinessImpact] = useState('');
-    const [dueDate, setDueDate] = useState('2024-03-14');
+    const [dueDate, setDueDate] = useState('');
     const [userId, setUserId] = useState('');
     const [username, setUsername] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
+        const date =  new Date().toISOString().slice(0, 10);
+        setDueDate(date);
+        
         const checkAuth = async () => {
             try {
                 const res = await fetch('http://localhost:3210/user', {
