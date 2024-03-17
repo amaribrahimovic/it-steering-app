@@ -18,7 +18,11 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    status: String
+    status: {
+        type: String,
+        required: true,
+        default: 'V presoji'
+    }
 });
 
 module.exports = mongoose.model("projects", projectSchema);

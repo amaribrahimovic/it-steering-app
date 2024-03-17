@@ -63,14 +63,14 @@ app.get('/user', async (req, res)=>{
             jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
                 if (!err){
                     const user = await User.findById(decodedToken.id);
-                    res.status(200).json(user);
+                    res.status(200).json(user)
                 }  
             });
-        } 
+        }  else
+            res.status(401).json({message: 'wait'});
     } catch(err){
         console.error(err)
     }
-    
 });
 
 // Get all of user's projects
@@ -79,8 +79,8 @@ app.get('/user/projects/:userId', async (req, res)=>{
         if(await checkJWT(req)){
             const user = await User.findById(req.params.userId).populate('projects');
             res.json(user.projects);
-        }
-        res.status(401).json({ message: 'You are not logged in'});
+        } else
+            res.status(401).json({ message: 'You are not logged in'});
     } catch(err){
         console.error(err);
         res.status(500).send('An error has occurred while fetching user projects');
@@ -123,8 +123,8 @@ app.delete('/projects/:projectId', async (req, res)=>{
         if(await checkJWT(req)){
             await Project.deleteOne({ _id: req.params.projectId });
             res.status(200).send('Project deleted');
-        }
-        res.status(401).json({ message: 'You are not logged in'});
+        } else
+            res.status(401).json({ message: 'You are not logged in'});
     } catch(err){
         console.error(err);
         res.status(500).send('An error occurred while deleting a project');
@@ -181,6 +181,11 @@ app.post('/login', async (req, res)=>{
 
 // Logout 
 app.get('/logout', (req, res)=>{
-    res.cookie('jwt', '', { maxAge: 1 });
-    res.status(200).json({ message: 'Logged out'});
+    try{
+        res.cookie('jwt', '', { maxAge: 1 });
+        res.status(200).json({ message: 'Logged out'});
+    } catch(err){
+        console.error(err);
+        res.status(500).json({ message: 'An error has occured while trying to log you out' });
+    }
 });
